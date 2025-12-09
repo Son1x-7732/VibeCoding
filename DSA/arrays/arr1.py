@@ -28,7 +28,34 @@ def sec_largest_optimal(arr):
             
     return slargest
     
+def sec_smallest_better(arr):
+    smallest = arr[0]
+    for i in range (len(arr)):
+        if arr[i] < smallest:
+            smallest = arr[i]
     
-print(max(arr))
-print(sec_largest_better(arr))
-print(sec_largest_optimal(arr))
+    ss = float('inf')
+    for i in range (len(arr)):
+        if arr[i] < ss and arr[i] > smallest:
+            ss = arr[i]
+            
+    return ss
+    
+def sec_smallest_optimal(arr):
+    smallest = arr[0]
+    sec_smallest = 9999
+    
+    for i in range (1, len(arr)):
+        if arr[i] < smallest:
+            sec_smallest = smallest
+            smallest = arr[i]
+        elif arr[i] < sec_smallest and arr[i] > smallest:
+            sec_smallest = arr[i]
+            
+    return sec_smallest
+    
+print(sec_smallest_better(arr))
+print(sec_smallest_optimal(arr))
+# print(max(arr))
+# print(sec_largest_better(arr))
+# print(sec_largest_optimal(arr))
